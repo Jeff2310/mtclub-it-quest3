@@ -1,13 +1,30 @@
 #ifndef LAB_LIST_H
 #define LAB_LIST_H
 
-struct lab__list_st{
+#include <stddef.h>
 
+
+struct lab__list_node_st {
+    void *data;                                      //通过void*指针和数据大小描述每个节点具体的数据
+    size_t data_size;                                //---------------------------------------------
+    struct lab__list_node_st *prev, *next;          //链表部分
 };
+extern struct lab__list_node_st __nullNode;
 
 struct lab__list_iter_st{
-
+    struct lab__list_node_st *node;
+//    typedef struct lab__list_node_st _Node;
+//    typedef struct lab__list_iter_st _Self;
 };
+
+struct lab__list_st{
+    int size;
+    struct lab__list_node_st *front;
+    struct lab__list_node_st *back;
+};
+
+
+typedef struct lab__list_node_st ListNode;
 
 // NOT MODIFY BELOW
 typedef struct lab__list_st ListDescriptor;
